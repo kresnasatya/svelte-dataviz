@@ -1,6 +1,6 @@
 # Svelte Dataviz
 
-Data visualization with Svelte 5 and D3.js.
+Practical example of data visualization by following [Svelte + D3 training by Matthias Stahl](https://www.youtube.com/playlist?list=PLNvnDrMLMSipfbxSp1Z4v9Ydu2ud5i9V8). This example use SvelteKit + Svelte 5 + D3.
 
 ## How to run?
 
