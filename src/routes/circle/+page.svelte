@@ -3,9 +3,7 @@
 </script>
 
 <svelte:head>
-    <title>Svelte Dataviz</title>
+    <title>Circle - Svelte Dataviz</title>
 </svelte:head>
 
-<ul>
-    <li><a href="/circle">Circle</a></li>
-</ul>
+<Circle/>
