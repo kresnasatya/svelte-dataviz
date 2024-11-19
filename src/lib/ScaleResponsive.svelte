@@ -45,12 +45,14 @@
 
 <style>
     main {
-        height: 100%;
+        height: 100vh;
         width: 100%;
+        overflow: hidden;
     }
 
     svg {
         background: #f3fff0;
+        display: block;
     }
 
     circle {
