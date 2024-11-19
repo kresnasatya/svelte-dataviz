@@ -1,7 +1,3 @@
-<script>
-    import Circle from '$lib/Circle.svelte';
-</script>
-
 <svelte:head>
     <title>Svelte Dataviz</title>
 </svelte:head>
