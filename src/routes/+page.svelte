@@ -9,4 +9,5 @@
 <ul>
     <li><a href="/circle">Circle</a></li>
     <li><a href="/scale-responsive">Scale and Responsive</a></li>
+    <li><a href="/components">Components</a></li>
 </ul>
