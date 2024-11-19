@@ -3,16 +3,22 @@
 	import Circle from './Circle.svelte';
 
     let data = $state([]);
-	setInterval(() => {
-		data = Array.from({ length: 1000 }).map(() => {
-			return {
-				a: Math.random(),
-				b: Math.random(),
-				r: Math.random(),
-				fill: `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`
-			};
-		});
-	}, 2000);
+	$effect(() => {
+		const interval = setInterval(() => {
+			data = Array.from({ length: 1000 }).map(() => {
+				return {
+					a: Math.random(),
+					b: Math.random(),
+					r: Math.random(),
+					fill: `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`
+				};
+			});
+		}, 2000);
+
+		return () => {
+			clearInterval(interval);
+		}
+	})
 
 	let width = $state(1000);
 	let height = $state(500);
