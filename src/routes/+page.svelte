@@ -8,4 +8,5 @@
     <li><a href="/components">Components</a></li>
     <li><a href="/canvas">Canvas</a></li>
     <li><a href="/voronoi">Voronoi</a></li>
+    <li><a href="/map">Map</a></li>
 </ul>
