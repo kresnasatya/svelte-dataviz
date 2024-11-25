@@ -6,8 +6,6 @@
     getContext('canvas').addItem(draw);
 
     function draw(ctx) {
-        ctx.save();
-
         const p = new Path2D(path);
         ctx.globalAlpha = opacity;
         ctx.fillStyle = fill;
@@ -17,7 +15,5 @@
             ctx.lineWidth = strokeWidth;
             ctx.stroke(p);
         }
-
-        ctx.restore();
     }
 </script>

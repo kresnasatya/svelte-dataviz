@@ -22,7 +22,11 @@
     function update() {
         ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, width, height);
-        items.forEach(fn => fn(ctx));
+        items.forEach(fn => {
+            ctx.save();
+            fn(ctx);
+            ctx.restore();
+        });
         frameId = requestAnimationFrame(update);
     }
 
