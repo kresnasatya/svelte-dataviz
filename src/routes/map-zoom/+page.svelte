@@ -35,8 +35,8 @@
 
 <main bind:clientWidth={width} bind:clientHeight={height}>
     <Canvas width={width} height={height} bind:hoveredColorId={hoveredColorId}>
-        {#each counties as { id, path, colorId }}
-            <County path={path} fill={colorId} opacity={hoveredCounty && hoveredCounty.id === id ? 1.0 : 0.5} />
+        {#each counties as { id, path }}
+            <County path={path} fill="purple" opacity={hoveredCounty && hoveredCounty.id === id ? 1.0 : 0.5} />
         {/each}
     </Canvas>
     <Canvas width={width} height={height} bind:hoveredColorId={hoveredColorId} hidden --position="absolute">
@@ -51,15 +51,5 @@
         width: 100vw;
         height: 100vh;
         overflow: hidden;
-    }
-
-    path {
-        fill: blue;
-        stroke: none;
-        opacity: 0.5;
-    }
-
-    path.active {
-        opacity: 1;
     }
 </style>
