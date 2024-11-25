@@ -1,8 +1,10 @@
 <script>
 	import { setContext } from "svelte";
+	import { cubicInOut } from 'svelte/easing';
+	import { tweened } from 'svelte/motion';
 	import { SvelteSet } from "svelte/reactivity";
 
-    let { width, height, children, hoveredColorId = $bindable(), hidden = false } = $props();
+    let { width, height, transform, children, hoveredColorId = $bindable(), hidden = false } = $props();
     
     let canvas;
     let frameId;
@@ -11,7 +13,8 @@
     let items = new SvelteSet();
 
     setContext('canvas', { addItem });
-
+    const tTransform = tweened(transform, { duration: 400, easing: cubicInOut });
+    
     function addItem(fn) {
         $effect(() => {
             items.add(fn);
@@ -20,10 +23,11 @@
     }
 
     function update() {
-        ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, width, height);
         items.forEach(fn => {
             ctx.save();
+            ctx.translate($tTransform.x, $tTransform.y);
+			ctx.scale($tTransform.k, $tTransform.k);
             fn(ctx);
             ctx.restore();
         });
@@ -31,7 +35,12 @@
     }
 
     $effect(() => {
+        ctx = canvas.getContext('2d', { willReadFrequently: true });
+
         update();
+
+        tTransform.set(transform);
+        // if ($tTransform) update();
 
         return () => {
             if (frameId) {
