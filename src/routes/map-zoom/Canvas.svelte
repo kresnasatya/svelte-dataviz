@@ -13,6 +13,10 @@
     let devicePixelRatio = 1;
 
     let items = new SvelteSet();
+    const tTransform = tweened(transform, {
+        duration: 400,
+        easing: cubicInOut,
+    });
 
     setContext('canvas', { addItem });
     
@@ -37,8 +41,8 @@
 
         items.forEach(fn => {
             ctx.save();
-            ctx.translate(transform.x, transform.y);
-			ctx.scale(transform.k, transform.k);
+            ctx.translate($tTransform.x, $tTransform.y);
+			ctx.scale($tTransform.k, $tTransform.k);
             fn(ctx);
             ctx.restore();
         });
@@ -71,6 +75,16 @@
 
     $effect(() => {
         if (canvas && ctx) scaleCanvas(canvas, ctx, width, height);
+    });
+
+    // Effect 1: Handle prop changes
+    $effect(() => {
+        tTransform.set(transform);
+    });
+
+    // Effect 2: Handle rendering updates
+    $effect.pre(() => {
+        if ($tTransform) invalidate();
     });
 
     function handleMouseMove(e) {
