@@ -10,4 +10,5 @@
     <li><a href="/voronoi">Voronoi</a></li>
     <li><a href="/map">Map</a></li>
     <li><a href="/map-zoom">Map on canvas and zoom on click (with tweened)</a></li>
+    <li><a href="/phyllotaxis">Pyhllotaxis</a></li>
 </ul>
