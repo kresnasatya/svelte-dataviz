@@ -9,5 +9,5 @@
     <li><a href="/canvas">Canvas</a></li>
     <li><a href="/voronoi">Voronoi</a></li>
     <li><a href="/map">Map</a></li>
-    <li><a href="/map-zoom">Map on canvas and zoom on click (caution!)</a></li>
+    <li><a href="/map-zoom">Map on canvas and zoom on click (no tweened!)</a></li>
 </ul>
