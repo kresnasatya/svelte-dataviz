@@ -9,6 +9,9 @@
 <p>
     I learn data visualization by following <a href="https://www.youtube.com/playlist?list=PLNvnDrMLMSipfbxSp1Z4v9Ydu2ud5i9V8" target="_blank">Svelte + D3 training by Matthias Stahl</a>. This example use SvelteKit + Svelte 5 + D3.
 </p>
+<p>
+    Source code available on <a href="https://github.com/kresnasatya/svelte-dataviz" target="_blank">github.com/kresnasatya/svelte-dataviz</a>.
+</p>
 
 <ul>
     <li><a href="/circle">Circle</a></li>
