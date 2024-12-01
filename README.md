@@ -7,7 +7,7 @@ I learn data visualization by following [Svelte + D3 training by Matthias Stahl]
 This site use SvelteKit.
 
 ```sh
-git clone https://github.com/senkulabs/svelte-dataviz.git
+git clone https://github.com/kresnasatya/svelte-dataviz.git
 cd svelte-dataviz
 pnpm install
 pnpm run dev
