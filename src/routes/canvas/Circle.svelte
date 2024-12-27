@@ -1,21 +1,21 @@
 <script>
 	import { getContext } from "svelte";
 	import { cubicOut } from "svelte/easing";
-	import { tweened } from "svelte/motion";
+	import { Tween } from "svelte/motion";
     
     let { x, y, r, fill } = $props();
 
     getContext('canvas').addItem(draw);
 
-    const tX = tweened(0, {
+    const tX = new Tween(0, {
         duration: 1000,
         easing: cubicOut
     });
-    const tY = tweened(0, {
+    const tY = new Tween(0, {
         duration: 1000,
         easing: cubicOut
     });
-    const tR = tweened(0, {
+    const tR = new Tween(0, {
         duration: 1000,
         easing: cubicOut
     });
@@ -23,19 +23,19 @@
     function draw(ctx) {
         ctx.save();
         
-        ctx.translate($tX, $tY);
+        ctx.translate(tX.current, tY.current);
         ctx.globalAlpha = 0.8;
         ctx.fillStyle = fill;
         ctx.beginPath();
-        ctx.arc(0, 0, $tR, 0, 2 * Math.PI);
+        ctx.arc(0, 0, tR.current, 0, 2 * Math.PI);
         ctx.fill();
 
         ctx.restore();
     }
 
     $effect(() => {
-        tX.set(x);
-        tY.set(y);
-        tR.set(r);
+        tX.target = x;
+        tY.target = y;
+        tR.target = r;
     });
 </script>

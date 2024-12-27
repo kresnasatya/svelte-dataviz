@@ -1,7 +1,7 @@
 <script>
 	import { setContext } from "svelte";
 	import { cubicInOut } from 'svelte/easing';
-	import { tweened } from 'svelte/motion';
+	import { Tween } from 'svelte/motion';
 	import { SvelteSet } from "svelte/reactivity";
 
     let { width, height, transform, children, hoveredColorId = $bindable(), hidden = false } = $props();
@@ -13,7 +13,7 @@
     let devicePixelRatio = 1;
 
     let items = new SvelteSet();
-    const tTransform = tweened(transform, {
+    const tTransform = new Tween(transform, {
         duration: 400,
         easing: cubicInOut,
     });
@@ -41,8 +41,8 @@
 
         items.forEach(fn => {
             ctx.save();
-            ctx.translate($tTransform.x, $tTransform.y);
-			ctx.scale($tTransform.k, $tTransform.k);
+            ctx.translate(tTransform.current.x, tTransform.current.y);
+			ctx.scale(tTransform.current.k, tTransform.current.k);
             fn(ctx);
             ctx.restore();
         });
@@ -79,12 +79,12 @@
 
     // Effect 1: Handle prop changes
     $effect(() => {
-        tTransform.set(transform);
+        tTransform.target = transform;
     });
 
     // Effect 2: Handle rendering updates
     $effect.pre(() => {
-        if ($tTransform) invalidate();
+        if (tTransform.current) invalidate();
     });
 
     function handleMouseMove(e) {
